@@ -1,0 +1,11 @@
+= Example Data Processor
+
+Example data processor written in Python. Any received datapoint values
+are changed to a value of `42.0`. The priority of events is set to `100`.
+
+== Running tests
+
+....
+cd tests
+python3 -m pytest -s
+....

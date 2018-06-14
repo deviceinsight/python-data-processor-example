@@ -9,7 +9,7 @@ def eprint(*args, **kwargs):
 
 
 def read_stdin():
-    for line in iter(sys.stdin.readline, b''):
+    for line in sys.stdin:
 
         if len(line) == 0:
             continue
