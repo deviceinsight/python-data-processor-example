@@ -3,6 +3,12 @@
 Example data processor written in Python. Any received datapoint values
 are changed to a value of `42.0`. The priority of events is set to `100`.
 
+== Install requirements
+
+....
+pip3 install -r requirements.txt
+....
+
 == Running tests
 
 ....
