@@ -1,0 +1,44 @@
+#!/usr/bin/env python
+from __future__ import print_function
+
+import sys
+import os
+import json
+
+
+# Do not buffer the output
+sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
+
+
+def eprint(*args, **kwargs):
+    print(*args, file=sys.stderr, **kwargs)
+
+
+def read_stdin():
+    for line in iter(sys.stdin.readline, b''):
+        eprint("Received line", line)
+        data_json = json.loads(line)
+        if "datapointValue" in data_json:
+            eprint("Received datapoint value:", data_json["datapointValue"])
+            data_json["datapointValue"]["value"] = "42.0"
+            print(json.dumps(data_json))
+
+
+if __name__ == "__main__":
+
+    config = sys.stdin.readline()
+    config_json = json.loads(config)
+
+    eprint("Received the config", config_json)
+
+    if "interval" in config_json:
+        interval = config_json["interval"]
+    else:
+        interval = 1.0
+
+    if "max" in config_json:
+        max_value = config_json["max"]
+    else:
+        max_value = 100.0
+
+    read_stdin()
