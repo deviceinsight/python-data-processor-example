@@ -1,11 +1,11 @@
 from common import DatapointValue, Event, invoke_data_processor
 
+test_processor = "../src/python-data-processor"
 
 def test_data_transformation():
 
-    binary = "../src/python-data-processor"
 
-    emitted_datapoints, emitted_events = invoke_data_processor(binary, {}, [
+    emitted_datapoints, emitted_events = invoke_data_processor(test_processor, {}, [
         DatapointValue("temp", "2014-01-01T10:23:00+0100", "1", "Float"),
         DatapointValue("pressure", "2014-01-01T10:23:05+0100", "5.0", "Float"),
         Event("pressure-high", "2014-01-01T10:23:05+0100", True, "Pressure is high")
