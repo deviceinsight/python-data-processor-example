@@ -121,7 +121,7 @@ def get_events(stdout):
 
 
 def invoke_data_processor(binary, config_dict, input_data, timeout=1.0):
-    p = Popen(binary, shell=True, stdin=PIPE, stdout=PIPE, stderr=PIPE, encoding='utf-8')
+    p = Popen("python " + binary, binary, shell=True, stdin=PIPE, stdout=PIPE, stderr=PIPE, encoding='utf-8')
 
     data_str = '\n'.join(map(lambda data: data.to_json(), input_data))
 
