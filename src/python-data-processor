@@ -9,7 +9,11 @@ def eprint(*args, **kwargs):
 
 
 def read_stdin():
-    for line in sys.stdin:
+
+    # Using sys.stdin.readline seems to work better than for line in sys.stdin, as far as buffering is concerned
+    line = sys.stdin.readline()
+
+    while line:
 
         if len(line) == 0:
             continue
@@ -25,6 +29,8 @@ def read_stdin():
             eprint("Received event value:", data_json["event"])
             data_json["event"]["priority"] = 100
             print(json.dumps(data_json), flush=True)
+
+        line = sys.stdin.readline()
 
 
 if __name__ == "__main__":
